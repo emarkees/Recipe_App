@@ -9,24 +9,20 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %>  
 
   <div>
-    <%= form.label :quantity, style: "display: block" %>
-    <%= form.text_field :quantity %>
+    <%= form.label :food_id, "Select a food:", style: "display: block" %>
+    <%= form.select :food_id, Food.all.map { |food| [food.name, food.id] }, prompt: "Select a food" %>
   </div>
+      <%= form.hidden_field :recipe_id, value: params[:recipe_id]%>    
 
-  <div>
-    <%= form.label :food_id, style: "display: block" %>
-    <%= form.text_field :food_id %>
-  </div>
+    <div class='mb-3' >
+      <%= form.label :quantity, style: "display: block" %>
+      <%= form.text_field :quantity %>
+    </div>
 
-  <div>
-    <%= form.label :recipe_id, style: "display: block" %>
-    <%= form.text_field :recipe_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit %>
+    </div>
 <% end %>
