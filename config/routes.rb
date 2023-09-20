@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get '/public_recipes', to: 'recipes#public_recipes'
 get '/custom_login', to: 'sessions#new', as: 'custom_login'
 
-  
+resources :shopping_lists, only: [:show]
 end
