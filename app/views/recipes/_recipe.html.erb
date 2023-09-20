@@ -1,0 +1,75 @@
+<div class="chec w-100 align-contents-center" id="<%= dom_id recipe %>">
+<h1 class="text-center py-3"><%= recipe.name %></h1>
+
+<div class="container container-fluid d-flex align-contents-start justify-content-between">
+  <div class="container m-0 pb-3">
+    <div class="mb-2 col gap-0 align-items-start">
+      <strong>Preparation time:</strong>
+      <%= recipe.preparation_time %>
+        <% if recipe.preparation_time >= 2 %>
+          <text class="m-0">hours</text>
+        <% elsif recipe.preparation_time < 1 %>
+          <text class="m-0">mins</text>
+        <% else %>
+          <text class="m-0">hrs</text>
+        <% end %>
+    </div>
+
+    <div class="mb-3">
+      <strong>Cooking time:</strong>
+        <%= recipe.cooking_time %>
+          <% if recipe.cooking_time >= 1 %>
+            <text class="m-0">hours</text>
+          <% elsif recipe.cooking_time < 1 %>
+            <text class="m-0">mins</text>
+          <% else %>
+            <text class="m-0">hour</text>
+          <% end %>
+          </div>
+    <p>
+      <strong>Description:</strong>
+      <%= recipe.description %>
+    </p>
+  </div>
+  <div class="d-flex gap-3 justify-content-start align-items-start w-25 p-0">
+    <div class="d-flex gap-3 align-items-center">
+      <label class="form-check-label">
+        <h4>Public:</h4>
+      </label>
+      <div class="form-check form-switch align-items-center">
+        <input class="form-check-input" type="checkbox">
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class=" container d-flex justify-content-between">
+  <%=link_to recipes_path do%> 
+    <button type="button" class="btn btn-primary">Generate shopping list</button>
+  <%end%>
+  <%= link_to "Add ingredients", new_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-light' %>
+
+</div>
+
+<p>
+  <strong>User:</strong>
+# <%= recipe.user_id %>
+</p>
+<hr class='bg-white py-1 rounded' >
+
+<div class="table-responsive check mb-3">
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th scope="col-3">Food</th>
+        <th scope="col-1">Quantity</th>
+        <th scope="col">Value</th>
+        <th class="text-center "  scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>
+</div>
