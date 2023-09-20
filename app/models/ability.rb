@@ -8,8 +8,6 @@ class Ability
 
     can :manage, Recipe, user_id: user.id
 
-
-
     #
     #   return unless user.present?
     #   can :read, :all
