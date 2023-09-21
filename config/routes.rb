@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :inventory_foods
+  resources :inventories
   resources :foods
   resources :recipe_foods
   resources :recipes
@@ -11,5 +13,5 @@ Rails.application.routes.draw do
   get '/public_recipes', to: 'recipes#public_recipes'
 get '/custom_login', to: 'sessions#new', as: 'custom_login'
 
-  
+resources :shopping_lists, only: [:show]
 end
