@@ -1,4 +1,4 @@
 class InventoryFood < ApplicationRecord
-  belongs_to :inventoryId
-  belongs_to :foodId
+  belongs_to :inventory
+  belongs_to :food
 end
