@@ -1,12 +1,50 @@
-<div id="<%= dom_id inventory %>">
-  <p>
-    <strong>Name:</strong>
-    <%= inventory.name %>
-  </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= inventory.user_id %>
-  </p>
+<p style="color: green"><%= notice %></p>
+<div class="chec w-100 align-contents-center" id="<%= dom_id @inventory %>">
+  <h1 class="text-center py-3"><%= @inventory.name %></h1>
+  <%= link_to "Add Food", new_food_path, class: 'btn btn-light' %>
+</div>
+
+<div class="d-flex justify-content-end mb-3" >
+  <button> <%= link_to "Add food", new_food_path, class: '' %> </button>
+</div>
+
+<div id="foods">  
+  ## to render partial information
+  <%= render partial: 'inventories/inventory', locals: { foods: @foods } %>
+
+  <div class="">
+    <div class="table-responsive">
+      <table class="table table-primary">
+        <thead>
+          <tr>
+            <th scope="col-3">Food</th>
+            <th scope="col-1">Quantity</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          <% @foods.each do |food| %>
+            <tr class="">            
+              <td scope="row"> 
+               <%= link_to "#{food.name}", food %>               
+               </td>
+              <td scope="row"> <%= food.quantity%> </td>
+              <td scope="row">                
+                <%= button_to "Remove", food, method: :delete %>
+              </td>
+            </tr>          
+          <%end%>
+
+        </tbody>
+      </table>
+    </div>
+    
+  
+  </div>
+
 
 </div>
+
+
