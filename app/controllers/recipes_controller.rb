@@ -8,7 +8,16 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.is_public || current_user == @recipe.user
+      # Show recipe details
+    else
+      flash[:notice] = "This recipe is private."
+      redirect_to recipes_path
+    end
+  end
 
   # GET /recipes/new
   def new

@@ -32,8 +32,10 @@
   </div>
 
   <div>
-    <%= form.label :public, style: "display: block" %>
-    <%= form.check_box :public %>
+    <div class="field">
+    <%= form.label :is_public %>
+    <%= form.check_box :is_public %>
+  </div>
   </div>
 
   <div class='mb-3' >

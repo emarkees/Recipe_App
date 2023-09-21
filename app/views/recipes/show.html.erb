@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @recipe %>
-
+<% if current_user == @recipe.user %>
+  <%= link_to "Add New Food", new_recipe_food_path(@recipe), class: "btn btn-primary" %>
+<% end %>
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
   <%= link_to "Back to recipes", recipes_path %>
