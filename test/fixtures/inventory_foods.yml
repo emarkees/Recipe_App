@@ -2,10 +2,10 @@
 
 one:
   quantity: 1
-  inventoryId: one
-  foodId: one
+  inventory: one
+  food: one
 
 two:
   quantity: 1
-  inventoryId: two
-  foodId: two
+  inventory: two
+  food: two
