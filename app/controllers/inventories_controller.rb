@@ -1,4 +1,5 @@
 class InventoriesController < ApplicationController
+  before_action :authenticate.user_id! #you can remove this
   before_action :set_inventory, only: %i[show edit update destroy]
 
   # GET /inventories or /inventories.json
