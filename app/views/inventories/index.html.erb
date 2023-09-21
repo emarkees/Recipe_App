@@ -1,14 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Inventories</h1>
+<div class="d-flex align-items-center justify-content-between px-1 mb-3">
+  <h1 class="underline" >Inventories</h1>
+  <%= link_to "New inventory", new_inventory_path, class: 'btn btn-light' %>
+</div>
 
 <div id="inventories">
   <% @inventories.each do |inventory| %>
-    <%= render inventory %>
-    <p>
-      <%= link_to "Show this inventory", inventory %>
-    </p>
+    <div class="border border-3 mb-4 d-flex px-4 py-4">   
+      <div class="w-50 d-flex flex-column gap-4 align-items-center">
+        <%= link_to inventory do %>
+          <h2 class=""> <%=inventory.name%> </h2>
+        <%end%>
+        <%= form_with(model: inventory, method: :delete, local: true, html: { class: 'form-inline', data: { confirm: 'Are you sure?' } }) do |form| %>
+          <%= form.submit 'Remove this inventory', class: 'btn btn-light' %>
+        <% end %>
+      </div>
+      <div class="w-50">
+        <h4>Description of the inventory</h4>
+        <p><%= inventory.description %>
+        </p>      
+      </div>
+    </div>    
   <% end %>
 </div>
-
-<%= link_to "New inventory", new_inventory_path %>
