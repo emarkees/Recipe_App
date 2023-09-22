@@ -1,4 +1,8 @@
 class FoodsController < ApplicationController
+  def index
+    @foods = Food.all
+  end
+
   def new
     @food = Food.new
     if params.key?(:recipe)
@@ -13,7 +17,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    if session[:recipe].nil?
+    if session[:recipe].nil? and !session[:inventory].nil?
       (@inventory = session[:inventory]
        if @food.save
          redirect_to new_inventory_food_path(food: @food, inventory: @inventory),
@@ -22,7 +26,7 @@ class FoodsController < ApplicationController
        else
          render :new, notice: 'Please try again'
        end)
-    else
+    elsif session[:inventory].nil? and !session[:recipe].nil?
       (
         @recipe = session[:recipe]
         if @food.save
@@ -31,6 +35,12 @@ class FoodsController < ApplicationController
         else
           render :new, notice: 'Please try again'
         end)
+    elsif @food.save
+      redirect_to foods_path,
+                  notice: 'Food was successfully created.'
+
+    else
+      render :new, notice: 'Please try again'
     end
   end
 
