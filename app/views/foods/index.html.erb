@@ -1,11 +1,12 @@
+<h1>Food List</h1>
+
 <p style="color: green"><%= notice %></p>
 
-<div class="d-flex justify-content-end mb-3" >
-  <button> <%= link_to "Add food", new_food_path, class: '' %> </button>
+<div class="d-flex justify-content-end mb-3">
+  <%= link_to "Add Food", new_food_path, class: 'btn btn-primary' %>
 </div>
 
 <div id="foods">
-
   <div class="">
     <div class="table-responsive">
       <table class="table table-primary">
@@ -18,28 +19,20 @@
           </tr>
         </thead>
         <tbody>
-        
           <% @foods.each do |food| %>
-            <tr class="">            
-              <td scope="row"> 
-               <%= link_to "#{food.name}", food %>               
-               </td>
-              <td scope="row"> <%= food.measurement_unit%> </td>
-              <td scope="row"> $ <%= food.price%> </td>              
-              <td scope="row">                
-                <%= button_to "Delete", food, method: :delete %>
+            <tr class="">
+              <td scope="row">
+                <%= link_to food.name, food %>
               </td>
-            </tr>          
-          <%end%>
-
+              <td scope="row"><%= food.measurement_unit %></td>
+              <td scope="row">$ <%= food.price %></td>
+              <td scope="row">
+                <%= button_to "Delete", food, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
-    
-  
   </div>
-
-
 </div>
-
-
