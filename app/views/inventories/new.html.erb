@@ -1,9 +1,23 @@
-<h1>New inventory</h1>
-
-<%= render "form", inventory: @inventory %>
-
-<br>
-
-<div>
-  <%= link_to "Back to inventories", inventories_path %>
-</div>
+<%= form_with(model: @inventory) do |form| %>
+    <% if @inventory.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@inventory.errors.count, "error") %> prohibited this inventory from being saved:</h2>
+  
+        <ul>
+          <% @inventory.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+   
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
+    </div>
+    
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
