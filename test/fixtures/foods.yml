@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  measurement_unit: MyString
+  messurement_unit: MyString
   price: 1.5
 
 two:
   name: MyString
-  measurement_unit: MyString
+  messurement_unit: MyString
   price: 1.5
