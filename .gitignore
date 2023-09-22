@@ -18,7 +18,6 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
-node_modules
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
@@ -30,3 +29,4 @@ node_modules
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+node_modules/
