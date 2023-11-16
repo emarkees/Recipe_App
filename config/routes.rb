@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :foods
-  resources :recipe_foods
-  resources :recipes
+  resources :shopping_list, only: %i[index]
+  resources :recipe_foods, only: %i[new create]
+  resources :inventory_foods, only: %i[new create]
+  get 'public_recipes', to: 'public_recipes#index'
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  root "recipes#index"
-  # config/routes.rb
-  get '/public_recipes', to: 'recipes#public_recipes'
-get '/custom_login', to: 'sessions#new', as: 'custom_login'
-
-  
+  resources :recipes, only: %i[index show new create destroy update] do
+    member do
+      delete :destroy
+    end
+  end
+  resources :inventories
+  root 'recipes#index'
 end
