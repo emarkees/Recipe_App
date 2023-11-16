@@ -1,4 +1,3 @@
-<%= render "layouts/navBar" %>
 <h1 class="inventoryHead"> <%= @inventory.name %> </h1>
 <% if can? :manage, @inventory %>
   <%= link_to 'Add food', new_food_path(inventory: @inventory) , class:("newRecipe") %>

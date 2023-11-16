@@ -85,7 +85,8 @@ form .button_to {
 .recipeactions {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 30%;
+  align-items: center;
 }
 
 .removeRecipe {
